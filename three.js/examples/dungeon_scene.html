@@ -80,7 +80,7 @@
 			var geometry, material, mesh;
 			var controls;
 
-			var objects = [];
+			var object;
 
 			var raycaster;
 
@@ -245,9 +245,9 @@
 					// model
 				var loader = new THREE.FBXLoader( );
 				loader.load( 'models/fbx/resultASCII2.fbx', function( object ) {
-
+				
 					scene.add( object );
-
+					
 				} );
 
 
@@ -310,9 +310,11 @@
 
 				if ( controlsEnabled ) {
 					raycaster.ray.origin.copy( controls.getObject().position );
-					raycaster.ray.origin.y -= 10;
+					raycaster.ray.origin.y -= 20;
 
-					var intersections = raycaster.intersectObjects( objects );
+					var intersections = raycaster.intersectObjects( object );
+	
+				
 
 					var isOnObject = intersections.length > 0;
 

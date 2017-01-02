@@ -48,6 +48,7 @@
 		<script src="js/ImprovedNoise.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
+		<script src="js/loaders/FBXLoader.js"></script>
 
 		<script>
 
@@ -87,6 +88,13 @@
 				controls.lookVertical = true;
 
 				scene = new THREE.Scene();
+				//model
+					var loader = new THREE.FBXLoader( );
+				loader.load( 'models/fbx/resultASCII2.fbx', function( object ) {
+				
+					scene.add( object );
+					
+				} );
 
 				// sides
 
