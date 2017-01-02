@@ -97,6 +97,29 @@
 				var loader = new THREE.FBXLoader( manager );
 				loader.load( 'models/fbx/xsi_man_skinning.fbx', function( object ) {
 
+					object.traverse( function( child ) {
+
+						if ( child instanceof THREE.Mesh ) {
+
+							// pass
+
+						}
+
+						if ( child instanceof THREE.SkinnedMesh ) {
+
+							if ( child.geometry.animations !== undefined || child.geometry.morphAnimations !== undefined ) {
+
+								child.mixer = new THREE.AnimationMixer( child );
+								mixers.push( child.mixer );
+
+								var action = child.mixer.clipAction( child.geometry.animations[ 0 ] );
+								action.play();
+
+							}
+
+						}
+
+					} );
 
 					scene.add( object );
 
