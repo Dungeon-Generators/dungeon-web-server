@@ -80,7 +80,7 @@
 			var geometry, material, mesh;
 			var controls;
 
-			var object;
+			var objects = [];
 
 			var raycaster;
 
@@ -244,9 +244,13 @@
 				
 					// model
 				var loader = new THREE.FBXLoader( );
-				loader.load( 'models/fbx/resultASCII2.fbx', function( object ) {
+				loader.load( 'models/fbx/resultASCII2.fbx', function( object, material ) {
+				
+				var material = new THREE.MeshLambertMaterial({ color: 0x000000 });
+				
 				
 					scene.add( object );
+					objects.push(object);
 					
 				} );
 
@@ -279,8 +283,6 @@
 				mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
 
-		
-
 				//
 
 				renderer = new THREE.WebGLRenderer();
@@ -312,7 +314,7 @@
 					raycaster.ray.origin.copy( controls.getObject().position );
 					raycaster.ray.origin.y -= 20;
 
-					var intersections = raycaster.intersectObjects( object );
+					var intersections = raycaster.intersectObjects( objects );
 	
 				
 
