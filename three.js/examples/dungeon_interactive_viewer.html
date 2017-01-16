@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - draggable cubes</title>
+		<title>Dungeon Viewer</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -71,22 +71,18 @@
 				
 				var loader = new THREE.FBXLoader( );
 				
-				loader.load( 'models/fbx/test1.fbx', function( object ) {
+				loader.load( 'models/fbx/result1.fbx', function( object ) {
 				
 				
-				//object.traverse( function( child ){
+				object.traverse( function( child ){
 				
-				//	if ( child instanceof THREE.Mesh ) {
+				if ( child instanceof THREE.Mesh ) {
                 
-					//	}
-					//	}); 
+					}
+						}); 
                 
-    
-                   var object;
-    
-					//object.scale.set(1,1,1);
 					scene.add( object );
-					//objects.push( object );
+					objects.push( object );
 					
 					
 					
@@ -114,7 +110,7 @@
 				info.style.top = '10px';
 				info.style.width = '100%';
 				info.style.textAlign = 'center';
-				info.innerHTML = '<a href="http://threejs.org" target="_blank">three.js</a> webgl - draggable cubes';
+				info.innerHTML = ' webgl - 500 tiles dungeon view';
 				container.appendChild( info );
 
 				stats = new Stats();
